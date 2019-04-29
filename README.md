@@ -1,2 +1,2 @@
-http://www.pygame.org/project-Tablet+Pressure-1302-.html
+http://www.akeric.com/blog/?page_id=798
 I need that link.
