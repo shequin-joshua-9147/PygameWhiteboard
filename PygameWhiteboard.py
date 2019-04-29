@@ -1,19 +1,32 @@
+"""
+Main file, that you run, for PygameWhiteboard.
+
+You run this file but it really doesn't do anything special code wise.
+It creates and initializes a pygame window and creates a frame object and overlays
+it on top of our pygame window. It also runs the main loop for the program.
+
+Most of the functionality lives within the frame object.
+"""
 import pygame
+import frame
 
-background_color = (255, 255, 255)
-width, height = 800, 600
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Pygame Paint")
-screen.fill(background_color)
+background_color = (255, 255, 255)  # white color
+width, height = 1200, 800  # default size of our window
+screen = pygame.display.set_mode((width, height))  # create window
+pygame.display.set_caption("Pygame Whiteboard")  # Set our window title
+screen.fill(background_color)  # make our background white
+pygame.display.flip()  # make the background change to the window
 
-pygame.display.flip()
+if __name__ == '__main__':
+    running = True  # running variable, if False end
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    default_frame = frame.Frame(width, height, screen)
 
-    pygame.draw.rect(screen, (255, 0, 0), (0, 0, 50, 50))
-
-    pygame.display.update()
+    while running:
+        for event in pygame.event.get():
+            # look the receives all Pygame events as event
+            if event.type == pygame.QUIT:
+                # hitting the red X
+                running = False
+        default_frame.step()
+        pygame.display.update()  # how we make Pygame draw the actual window changes
