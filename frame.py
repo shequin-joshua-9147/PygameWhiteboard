@@ -59,10 +59,11 @@ class Frame:
         """
         pass
 
-    def step(self):
+    def step(self, events):
         """
         Our step function for the frame class. This is called for every update our
         windows checks for.
+        :param events: Expects results of pygame.event.get()
         :return: None
         """
         pass

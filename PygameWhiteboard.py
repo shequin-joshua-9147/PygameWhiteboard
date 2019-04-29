@@ -23,10 +23,11 @@ if __name__ == '__main__':
     default_frame = frame.Frame(width, height, screen)
 
     while running:
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        for event in events:
             # look the receives all Pygame events as event
             if event.type == pygame.QUIT:
                 # hitting the red X
                 running = False
-        default_frame.step()
+        default_frame.step(events)
         pygame.display.update()  # how we make Pygame draw the actual window changes
