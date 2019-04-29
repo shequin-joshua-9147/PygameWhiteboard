@@ -6,6 +6,7 @@ it as an abstract in Python. This module will contain all of the main functional
 program, mainly by including and sending inputs to, and receiving directions from, the
 other connected parts.
 """
+import bundle
 
 
 class Frame:
@@ -26,14 +27,15 @@ class Frame:
         self.screen = screen
 
         self.currentBundle = None
+        self.new_bundle()
 
-    def new_bundle(self, name):
+    def new_bundle(self):
         """
         Produce a new bundle and change our current Frame bundle.
-        :param name: String. Name of the new bundle you desire.
         :return: None
         """
-        pass
+        new_bundle = bundle.Bundle(self.screen)
+        self.currentBundle = new_bundle
 
     def save_bundle(self, save_as):
         """
@@ -59,11 +61,11 @@ class Frame:
         """
         pass
 
-    def step(self, events):
+    def step(self, events, mouse_info):
         """
         Our step function for the frame class. This is called for every update our
         windows checks for.
         :param events: Expects results of pygame.event.get()
         :return: None
         """
-        pass
+        self.currentBundle.step(events, mouse_info)
